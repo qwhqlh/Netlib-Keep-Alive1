@@ -55,14 +55,6 @@ def ensaluta_konto(playwright, UZANTONOMO, PWD):
     except Exception as e:
         print(f"❌ 账号 {UZANTONOMO} 登录异常: {e}")
 
-def Ruli():
-    with sync_playwright() as playwright:
-        ensaluta_konto(playwright, UZANTONOMO, PASVORTO)
-        time.sleep(2)
-
-if __name__ == "__main__":
-    Ruli()
-
 def sendi_telegraman_mesaĝon(teksto):
     url = f"https://api.telegram.org/bot{TELEGRAM_SIGNALO}/sendMessage"
     utila_ŝarĝo = {
@@ -77,3 +69,11 @@ def sendi_telegraman_mesaĝon(teksto):
             print(f"⚠️ Telegram 发送失败: {response.text}")
     except Exception as e:
         print(f"⚠️ Telegram 异常: {e}")
+
+def Ruli():
+    with sync_playwright() as playwright:
+        ensaluta_konto(playwright, UZANTONOMO, PASVORTO)
+        time.sleep(2)
+
+if __name__ == "__main__":
+    Ruli()
