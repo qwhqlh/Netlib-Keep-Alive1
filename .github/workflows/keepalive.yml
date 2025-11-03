@@ -2,7 +2,7 @@ name: Teni Saluton Viva
 
 on:
   schedule:
-    - cron: "0 0 1,31 * *"  # 每月 1 号和 31 号凌晨0点
+    - cron: "0 16 * * *"   # 每天0点随机6小时之内
   workflow_dispatch:       # 支持手动触发
 
 jobs:
@@ -10,6 +10,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: ⏱️ Generi hazardan prokraston (maksimume 6 horojn).
+        run: |
+          delay=$((RANDOM % 21601))  
+          echo "将在 $delay 秒后开始执行任务"
+          sleep $delay
+    
       - name: Elchecki deponejon
         uses: actions/checkout@v4
 
